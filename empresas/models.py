@@ -1,5 +1,6 @@
 from django.db import models
 from accounts.models import Profile
+from egresados.models import Egresado as mEgresado
 
 # Create your models here.
 
@@ -175,3 +176,19 @@ class Empresa(models.Model):
 Modelo de Vacantes que las empresas lanzarán al programa de mi primer empleo
 """
 
+class Vacante(models.Model):
+	id_empresa = models.ForeignKey(Empresa, related_name='vacante')
+	id_egresado = models.ManyToManyField(mEgresado, related_name='vacante', blank=True)
+	puesto_solicitante = models.CharField(max_length=80)
+	activades = models.TextField(null=True, blank=True)
+	dias = models.IntegerField(null=True, blank=True)
+	horario_entrada = models.TimeField(blank=True, null=True)
+	horario_entrada_sabado = models.TimeField(blank=True, null=True)
+	horario_salida = models.TimeField(blank=True, null=True)
+	horario_salida_sabado = models.TimeField(blank=True, null=True)
+	fecha_alta = models.DateField(blank=True, null=True)
+	fecha_asignado = models.DateField(blank=True, null=True)
+	vacante_activa = models.BooleanField(default=True)
+
+	def __str__(self):
+		return self.puesto_solicitante

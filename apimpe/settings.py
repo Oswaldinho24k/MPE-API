@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'accounts',
     'egresados',
     'empresas',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

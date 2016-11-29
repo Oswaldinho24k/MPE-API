@@ -1,6 +1,7 @@
 from django.db import models
 from accounts.models import Profile
-from egresados.models import Egresado as mEgresado
+from egresados.models import Egresado
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -123,8 +124,8 @@ class Empresa(models.Model):
 		('Zana','Zimapán')  
 				)
 
-	emp = models.OneToOneField(Profile, related_name='empresa', null=True, blank=True)
-	emp_nombre_completo = models.CharField(max_length=150, null=True, blank=True)
+	emp = models.OneToOneField(User, related_name='empresa', null=True, blank=True)
+	emp_nombre = models.CharField(max_length=150, null=True, blank=True)
 	emp_calle = models.CharField(max_length=150, null=True, blank=True)
 	emp_colonia = models.CharField(max_length=150, null=True, blank=True)
 	emp_municipio = models.CharField(max_length=4, choices=MUNICIPIOS, null=True, blank=True)
@@ -153,11 +154,11 @@ class Empresa(models.Model):
 	emp_rango_trab = models.CharField(max_length=60, null=True, blank=True)
 	emp_acceso = models.CharField(max_length=60, null=True, blank=True)
 	emp_extension = models.CharField(max_length=60, null=True, blank=True)
-	emp_rfc_imagen = models.ImageField(upload_to='rfc_imagen', null=True, blank=True)
-	emp_identificacion = models.CharField(max_length=60, null=True, blank=True)
-	emp_identificacion_tutor =models.CharField(max_length=60, null=True, blank=True)
-	emp_comprobante = models.CharField(max_length=60, null=True, blank=True)
-	emp_carta =models.CharField(max_length=60, null=True, blank=True)
+	emp_rfc_imagen = models.FileField(upload_to="empresa/rfc",null=True, blank=True)
+	emp_identificacion = models.FileField(upload_to="empresa/ide",null=True, blank=True)
+	emp_identificacion_tutor =models.FileField(upload_to="empresa/idtutor",null=True, blank=True)
+	emp_comprobante = models.FileField(upload_to="empresa/comprobante",null=True, blank=True)
+	emp_carta =models.FileField(upload_to="empresa/carta",null=True, blank=True)
 	emp_pagina = models.CharField(max_length=60, null=True, blank=True)
 	emp_ubucacion =models.TextField(null=True, blank=True)
 	emp_croquis = models.CharField(max_length=60, null=True, blank=True)
@@ -177,9 +178,9 @@ Modelo de Vacantes que las empresas lanzarán al programa de mi primer empleo
 """
 
 class Vacante(models.Model):
-	id_empresa = models.ForeignKey(Empresa, related_name='vacante')
-	id_egresado = models.ManyToManyField(mEgresado, related_name='vacante', blank=True)
-	puesto_solicitante = models.CharField(max_length=80)
+	empresa = models.ForeignKey(Empresa, blank=True, null=True)
+	egresado = models.ManyToManyField(User, related_name='vacante', blank=True)
+	puesto = models.CharField(max_length=80)
 	activades = models.TextField(null=True, blank=True)
 	dias = models.IntegerField(null=True, blank=True)
 	horario_entrada = models.TimeField(blank=True, null=True)
@@ -191,4 +192,4 @@ class Vacante(models.Model):
 	vacante_activa = models.BooleanField(default=True)
 
 	def __str__(self):
-		return self.puesto_solicitante
+		return self.puesto

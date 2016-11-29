@@ -1,5 +1,6 @@
 from django.db import models
 from accounts.models import Profile
+from django.contrib.auth.models import User
 #from empresas.models import Vacante
 
 # Create your models here.
@@ -184,10 +185,207 @@ UNIVERSIDADES = (
 	('U87','Universidad Tecnológica Internacional (Tlaxcoapan)'),
 	('U88','Universidad Tollancingo (Tula)')
 		)
+CARRERAS = (
+	('Aac','Abogacía'),
+	('Ali','Accidentología Vial'),
+	('Aor','Actuario'),
+	('Adl','Administración de Servicios de Salud'),
+	('Aau','Agrimensura'),
+	('Aam','Agronomía'),
+	('Asm','Análisis de Sistemas'),
+	('Aag','Antropología'),
+	('Aag','Archivología'),
+	('Asu','Arquitectura'),
+	('Adr','Arte dramático (Teatro)'),
+	('Ast','Artes - Bellas Artes'),
+	('Asc','Artes Plásticas'),
+	('Ang','Asesoramiento de imagen'),
+	('Aam','Astronomía'),
+	('Arr','Azafata o comisario de a bordo'),
+	('Bag','Bibliotecología'),
+	('Bai','Bioquímica'),
+	('Bor','Bioterio'),
+	('Bag','Bromatología'),
+	('Cai','Caligrafía Pública'),
+	('Cln','Camarero Profesional'),
+	('Con','Canto'),
+	('Coo','Ceremonial y Protocolo'),
+	('Cai','Ciencia Política'),
+	('Cst','Ciencia y Tecnología de los alimentos'),
+	('Csc','Ciencias Biológicas'),
+	('Cae','Ciencias de la Atmósfera'),
+	('Cni','Ciencias de la Computación'),
+	('Cna','Ciencias de la Comunicación'),
+	('Cnd','Ciencias de la Educación'),
+	('Cor','Ciencias del Gobierno'),
+	('Csc','Ciencias Físicas'),
+	('Csa','Ciencias Geológicas'),
+	('Csd','Ciencias Químicas'),
+	('Cln','Cocinero Profesional'),
+	('Cni','Comercialización'),
+	('Cln','Comercio Internacional'),
+	('Clc','Composición Musical'),
+	('Crt','Constructor'),
+	('Crd','Contador'),
+	('Cai','Criminalistica'),
+	('Dsv','Despachante de aeronaves'),
+	('Dlr','Dirección Coral'),
+	('Daf','Dirección de Fotografía'),
+	('Dlt','Dirección Orquestal'),
+	('Dst','Diseño de Historietas'),
+	('Doi','Diseño de Imagen y Sonido'),
+	('Dlt','Diseño de Indumentaria y textil'),
+	('Dsr','Diseño de Interiores'),
+	('Dpi','Diseño de Paisaje (Agronomía)'),
+	('Dbw','Diseño de sitios web'),
+	('Dpr','Diseño del Paisaje (Arquitectura)'),
+	('Dlu','Diseño en Comunicación Visual'),
+	('Doi','Diseño Gráfico'),
+	('Dli','Diseño Industrial'),
+	('Eag','Ecología'),
+	('Esi','Economía y administración agrarias'),
+	('Eni','Edición'),
+	('Eai','Educación Física'),
+	('Eia','Educación Inicial (preescolar)'),
+	('Ear','Enfermería'),
+	('Eoi','Escribano Público'),
+	('Fac','Farmacia'),
+	('Faf','Filosofía'),
+	('Fau','Floricultura'),
+	('Fag','Fonoaudiología'),
+	('Gaf','Geografía'),
+	('Gst','Gestión de Agroalimentos'),
+	('Gsv','Gestión de Instituciones Educativas'),
+	('Hap','Hemoterapia'),
+	('Har','Historia'),
+	('Har','Hotelería'),
+	('Iai','Ingeniería Aeronáutica'),
+	('Iar','Ingeniería Agraria'),
+	('Ilt','Ingeniería Ambiental'),
+	('Iai','Ingeniería Biomédica'),
+	('Ilv','Ingeniería Civil'),
+	('Ili','Ingeniería Comercial'),
+	('Ist','Ingeniería de Alimentos'),
+	('Ipi','Ingeniería Eléctrica'),
+	('Idi','Ingeniería Electromecánica'),
+	('Iai','Ingeniería Electrónica'),
+	('Isn','Ingeniería en Comunicaciones'),
+	('Iai','Ingeniería en Física Médica'),
+	('Isl','Ingeniería en Materiales'),
+	('Iol','Ingeniería en Petróleo'),
+	('Ism','Ingeniería en Sistemas'),
+	('Ilt','Ingeniería Forestal'),
+	('Iai','Ingeniería Hidráulica'),
+	('Ili','Ingeniería Industrial'),
+	('Iai','Ingeniería Informática'),
+	('Ini','Ingeniería Mecánica'),
+	('Iki','Ingeniería Metalúrgica'),
+	('Iai','Ingeniería naval y mecánica'),
+	('Iae','Ingeniería Pesquera'),
+	('Iai','Ingeniería Química'),
+	('Ieo','Instructor del Método DeRose'),
+	('Ioi','Instrumentador Quirúrgico'),
+	('Jar','Jardinería'),
+	('Kag','Kinesiología'),
+	('Lae','Lengua Inglesa'),
+	('Lsr','Letras'),
+	('Lni','Licenciado en Administración'),
+	('Ldd','Licenciado en Biodiversidad'),
+	('Lam','Licenciado en Economía'),
+	('Lai','Licenciado en Educación Física'),
+	('Lsn','Licenciado en Sistemas de Información de las Organizaciones'),
+	('Loa','Licenciatura / Profesorado en Piano'),
+	('Lsu','Licenciatura en Alemán, Francés, Inglés, Italiano y Portugués'),
+	('Llt','Licenciatura en Artes Visuales con orientación en: Escultura, Pintura, Grabado y Arte Textil'),
+	('Lag','Licenciatura en Biotecnología'),
+	('Lli','Licenciatura en Educación Especial'),
+	('Lau','Licenciatura en Escultura'),
+	('Laf','Licenciatura en Fotografía'),
+	('Lai','Licenciatura en Genética'),
+	('Llt','Licenciatura en Gerenciamiento Ambiental'),
+	('Loa','Licenciatura en Grabado'),
+	('Lsd','Licenciatura en Humanidades'),
+	('Laa','Licenciatura en Lengua y Literatura Castellana'),
+	('Lte','Licenciatura en Management'),
+	('Lag','Licenciatura en Museología'),
+	('Lss','Licenciatura en Ortesis y Prótesis'),
+	('Lsn','Licenciatura en producción de bio-imágenes'),
+	('Lai','Licenciatura en Seguridad Pública'),
+	('Los','Licenciatura en Urbanismo'),
+	('Mgi','Marketing'),
+	('Mrd','Martillero Público, Corredor (Mobiliario e Inmobiliario), Administrador de Consorcios y Tasador'),
+	('Msc','Matemáticas'),
+	('Mai','Medicina'),
+	('Mag','Meteorologia'),
+	('Map','Musicoterapia'),
+	('Noi','Notario público'),
+	('Nni','Nutrición'),
+	('Oac','Obstetricia'),
+	('Oaf','Oceanografía'),
+	('Oag','Odontología'),
+	('Ooi','Óptico técnico'),
+	('Ost','Organización de Eventos'),
+	('Oni','Organización de la Producción'),
+	('Pag','Paleontología'),
+	('Pln','Panadero Profesional'),
+	('Plb','Pastelero Profesional'),
+	('Plt','Perfecionamiento Instrumental'),
+	('Paa','Perfusionista en cirugía cardíaca'),
+	('Pos','Periodismo'),
+	('Pli','Piloto Comercial'),
+	('Pau','Pintura'),
+	('Pag','Podología'),
+	('Pni','Procuración'),
+	('Pai','Producción Radial y Televisiva'),
+	('Psi','Profesional en Artes Culinarias'),
+	('Pui','Profesorado en Educación General Básica'),
+	('Plc','Profesorado en Educación Musical'),
+	('Pag','Profesorado en Enseñanza Media y Superior en Psicología'),
+	('Par','Profesorado en Guitarra'),
+	('Pri','Profesorado en Informática'),
+	('Pld','Profesorado Universitario para el Tercer ciclo de la de la EGB y la Educación Polimodal'),
+	('Pag','Psicología'),
+	('Pag','Psicopedagogía'),
+	('Pdd','Publicidad'),
+	('Rlu','Realización Audiovisual'),
+	('Rsn','Recursos Humanos'),
+	('Roa','Relaciones del Trabajo'),
+	('Rsl','Relaciones Internacionales'),
+	('Rml','Relaciones Públicas e Institucionales'),
+	('Rni','Religión'),
+	('Soi','Secretariado Ejecutivo'),
+	('Sls','Sindicatura Concursal'),
+	('Sdd','Sistemas de Seguridad'),
+	('Svc','Sistemas Informáticos'),
+	('Sag','Sociología'),
+	('Tni','Tecnicatura en Prevención de Drogadicción'),
+	('Tsl','Técnicatura en Producción de Medios Audiovisuales, Eventos y Espectáculos'),
+	('Tas','Tecnico Ceramista'),
+	('Tag','Técnico de Laboratorio Clínico e Histopatología'),
+	('Tsc','Técnico en Análisis Clínicos'),
+	('Tae','Técnico en Producción Lechera'),
+	('Tsr','Técnico en Seguros'),
+	('Tas','Técnico Mecánico Electricista'),
+	('Tms','Técnico Mecánico Electricista'),
+	('Toa','Técnico Museógrafo'),
+	('Too','Técnico Radiólogo'),
+	('Tsm','Técnico Superior en Cosméticos y Perfumes'),
+	('Tsc','Técnico Superior en Cultivo y Obtención de Aromáticas'),
+	('Tsl','Tecnico Universitario En Asuntos Municipales'),
+	('Tlp','Técnico Universitario en Dinámica Grupal'),
+	('Tbr','Técnico Universitario en Industria de la Madera.'),
+	('Tar','Técnico Universitario en Minería'),
+	('Tln','Terapia Ocupacional'),
+	('Tli','Trabajo Social'),
+	('Toi','Traductorado Público'),
+	('Tsl','Traductorado Público en Idioma Inglés'),
+	('Tos','Turismo'),
+	('Var','Veterinaria'),
+		)
 
 class Egresado(models.Model):
 
-	egr = models.OneToOneField(Profile, null=True, blank=True)
+	egr = models.OneToOneField(User, null=True, blank=True)
 	nombre = models.CharField(max_length=50, null=True, blank=True)
 	apellidop = models.CharField(max_length=50, null=True, blank=True)
 	apellidom = models.CharField(max_length=50, null=True, blank=True)
@@ -206,17 +404,17 @@ class Egresado(models.Model):
 	email = models.EmailField(null=True, blank=True)
 	#nivel = ???
 	universidad = models.CharField(max_length=3,choices=UNIVERSIDADES, null=True, blank=True)
-	###carrera = models.ForeignKey(Carrera, null=True, blank=True)
+	carrera = models.CharField(max_length=3, choices=CARRERAS, null=True, blank=True)
 	#situacion = ???
 	añoegreso = models.DateField(null=True, blank=True)
 	fechaingresoprograma = models.DateField(auto_now=True, null=True, blank=True)
 	#colocado = ???
-	certificado = models.FileField(upload_to = "certificado", null=True, blank=True)
-	identificacion = models.FileField(upload_to = "identificación", null=True, blank=True)
-	compdomicilio = models.FileField(upload_to = "domicilio", null=True, blank=True)
-	titulo = models.FileField(upload_to = "titulo", null=True, blank=True)
-	fcurp = models.FileField(upload_to = "curp", null=True, blank=True)
-	carta = models.FileField(upload_to = "carta", null=True, blank=True)
+	certificado = models.FileField(upload_to = "egresado/certificado", null=True, blank=True)
+	identificacion = models.FileField(upload_to = "egresado/identificación", null=True, blank=True)
+	compdomicilio = models.FileField(upload_to = "egresado/domicilio", null=True, blank=True)
+	titulo = models.FileField(upload_to = "egresado/titulo", null=True, blank=True)
+	fcurp = models.FileField(upload_to = "egresado/curp", null=True, blank=True)
+	carta = models.FileField(upload_to = "egresado/carta", null=True, blank=True)
 	fechatitulacion = models.DateField(auto_now_add=True, null=True, blank=True)
 	promedio = models.DecimalField(decimal_places=2, max_digits=4, null=True, blank=True)
 	becario = models.BooleanField("Es Becario",default= False)
@@ -232,9 +430,9 @@ class Egresado(models.Model):
 	#status
 	#motivobaja = ???
 	#vacante = models.OneToOneField(Vacante, related_name='vacante', blank=True, null=True)
-	curriculum = models.FileField(upload_to = "cv", null=True, blank=True)
+	curriculum = models.FileField(upload_to = "egresado/cv", null=True, blank=True)
 	#psicologica ???
-	archivopsicologica = models.FileField(upload_to = "psico", null=True, blank=True)
+	archivopsicologica = models.FileField(upload_to = "egresado/psico", null=True, blank=True)
 	notarjeta = models.CharField(max_length=16, blank=True, null=True)
 	#noseguropopular = ???
 	segpop = models.CharField(max_length=100, blank=True, null=True)
@@ -261,7 +459,7 @@ class Estudio(models.Model):
 	('S', 'Soltero'), 
 	)
 
-	egresado = models.OneToOneField(Egresado, blank=True, null=True)
+	egresado = models.OneToOneField(User, blank=True, null=True)
 	edo_civil = models.CharField(max_length=50,choices = EDOC, blank=True, null=True)
 	dependientes = models.CharField(max_length=2, blank=True, null=True)
 	situacionlaboral = models.CharField(max_length=20, blank=True, null=True)
@@ -295,7 +493,7 @@ Modelo de Encuestas que el egresado debe rellenar
 """
 
 class Encuesta(models.Model):
-	user = models.OneToOneField(Egresado, related_name='encuesta')
+	user = models.OneToOneField(User, related_name='encuesta')
 	fecha_captura = models.DateField(auto_now=True)
 	aporte = models.CharField(max_length=150)
 	#por que medio se entero sobre la empresa Supongo
@@ -324,7 +522,7 @@ class Encuesta(models.Model):
 
 class Expectativa(models.Model):
 
-	id_egresado = models.OneToOneField(Egresado, related_name='expectativa')
+	id_egresado = models.OneToOneField(User, related_name='expectativa')
 	entrevista_lab = models.BooleanField(default=True)
 	que_quieres = models.CharField(max_length=100)	
 	que_esperas = models.CharField(max_length=100)
@@ -348,7 +546,7 @@ Modelo de reporte mensual
 """
 
 class Reporte(models.Model):
-	egresado = models.ForeignKey(Egresado, related_name='reportes')
+	egresado = models.ForeignKey(User, related_name='reportes')
 	numero = models.IntegerField()
 	fecha = models.DateField()
 	area = models.CharField(max_length=100)
@@ -374,8 +572,5 @@ class Reporte(models.Model):
 	def __str__(self):
 		return self.fecha
 
-"""
-Modelo de pruebas psicológicas
-"""
-#Espera por el modelo
+
 

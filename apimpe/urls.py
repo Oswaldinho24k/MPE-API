@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.static import serve
 from django.conf import settings
+from api import urls as apiUrls
 #from accounts import urls as acUrls
 #from egresados import urls as egUrls
 #from empresas import urls as emUrls
@@ -32,6 +33,9 @@ urlpatterns = [
     #url(r'^accounts/', inlcude(acUrls)),
     #url(r'^empresas/', inlcude(acUrls)),
     #url(r'^egresados/', inlcude(acUrls))
+    url(r'^api/', include(apiUrls))
 
 
 ]
+
+

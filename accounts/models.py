@@ -15,6 +15,7 @@ class Profile(models.Model):
 	password = models.CharField(max_length=100, blank=True, null=True)
 	photo = models.ImageField(upload_to="/account/photo", blank=True, null=True)
 	tipo = models.CharField(max_length=2, choices=TIPO, blank=True, null=True)
+	token = models.CharField(max_length=1000, blank=True, null=True)
 
 	def __str__(self):
 		return self.name

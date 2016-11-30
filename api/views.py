@@ -5,6 +5,13 @@ from empresas.models import Camara, Empresa, Vacante
 from rest_framework import viewsets
 from api.serializers import UserSerializer, GroupSerializer, VacanteSerializer, EmpresaSerializer, ProfileSerializer, EgresadoSerializer
 
+#Agregamos el login y permisos
+from rest_framework.authentication import BasicAuthentication, SessionAuthentication
+#PErmisos
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import detail_route, list_route
+from rest_framework.response import Response
+
 """
 API endpoints for the accounts app
 """
@@ -13,6 +20,16 @@ class UserViewSet(viewsets.ModelViewSet):
     
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
+
+    @list_route(methods=['post'],
+        authentication_classes=[BasicAuthentication],
+        permission_classes=[IsAuthenticated])
+    def updatetoken(self, request, *args, **kwargs):
+        token = request.POST.get('token')
+        user = request.user
+        user.profile.token = token
+        user.save()
+        return Response({'Token actualizado':True})
 
 #Gropus endpoints
 class GroupViewSet(viewsets.ModelViewSet):

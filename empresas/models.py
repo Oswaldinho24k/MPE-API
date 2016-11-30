@@ -171,7 +171,7 @@ class Empresa(models.Model):
 
 
 	def __str__(self):
-		return self.emp_nombre_completo
+		return self.emp_nombre
 
 """
 Modelo de Vacantes que las empresas lanzarán al programa de mi primer empleo

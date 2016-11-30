@@ -25,7 +25,7 @@ class UserViewSet(viewsets.ModelViewSet):
         authentication_classes=[BasicAuthentication],
         permission_classes=[IsAuthenticated])
     def updatetoken(self, request, *args, **kwargs):
-        token = ProfileSerializer(instanciate=request.user, data=request.data)
+        token = ProfileSerializer(instance=request.user, data=request.data)
         user = request.user
         user.profile.token = token
         user.save()

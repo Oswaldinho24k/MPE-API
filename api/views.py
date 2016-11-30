@@ -7,6 +7,13 @@ from rest_framework.authentication import BasicAuthentication, SessionAuthentica
 from rest_framework.permissions import IsAuthenticated
 from api.serializers import UserSerializer, GroupSerializer, VacanteSerializer, EmpresaSerializer, ProfileSerializer, EgresadoSerializer
 
+#Agregamos el login y permisos
+from rest_framework.authentication import BasicAuthentication, SessionAuthentication
+#PErmisos
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import detail_route, list_route
+from rest_framework.response import Response
+
 """
 API endpoints for the accounts app
 """
@@ -15,8 +22,26 @@ class UserViewSet(viewsets.ModelViewSet):
     
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
+
     authentication_classes = (BasicAuthentication, SessionAuthentication)
     permission_classes = (IsAuthenticated, )
+
+
+    @list_route(methods=['post'],
+        authentication_classes=[BasicAuthentication],
+        permission_classes=[IsAuthenticated])
+    def updatetoken(self, request, *args, **kwargs):
+        # serializer = ProfileSerializer(instance=request.user, data=request.data)
+        try:
+            token = request.data['token']
+            user = request.user
+            user.profile.token = token
+            user.profile.save()
+            return Response({'Token actualizado':True})
+        except:
+            return Response({'Token actualizado': False})
+
+
 #Gropus endpoints
 class GroupViewSet(viewsets.ModelViewSet):
     

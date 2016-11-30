@@ -21,7 +21,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class ProfileSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Profile
-		fields = ('user', 'name', 'email', 'photo', 'tipo')
+		fields = ('user', 'name', 'email', 'photo', 'tipo','token')
 
 """
 Serializers for each model of the Empresas app

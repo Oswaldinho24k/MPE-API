@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'accounts',
     'egresados',
     'empresas',
-    'rest_framework'
+    'rest_framework',
+    'api'
 ]
 
 MIDDLEWARE = [
@@ -137,4 +138,15 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISION_CLASSES':[
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly', 
+    ]
+}
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework.authentication.BasicAuthentication', 
+        'rest_framework.authentication.SessionAuthentication', 
+        ) 
 
+}

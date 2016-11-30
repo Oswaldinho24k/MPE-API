@@ -25,11 +25,15 @@ class UserViewSet(viewsets.ModelViewSet):
         authentication_classes=[BasicAuthentication],
         permission_classes=[IsAuthenticated])
     def updatetoken(self, request, *args, **kwargs):
-        token = ProfileSerializer(instance=request.user, data=request.data)
-        user = request.user
-        user.profile.token = token
-        user.save()
-        return Response({'Token actualizado':True})
+        # serializer = ProfileSerializer(instance=request.user, data=request.data)
+        try:
+            token = request.data['token']
+            user = request.user
+            user.profile.token = token
+            user.profile.save()
+            return Response({'Token actualizado':True})
+        except:
+            return Response({'Token actualizado': False})
 
 #Gropus endpoints
 class GroupViewSet(viewsets.ModelViewSet):

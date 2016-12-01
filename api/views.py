@@ -3,8 +3,7 @@ from accounts.models import Profile
 from egresados.models import Egresado, Estudio, Encuesta, Expectativa, Reporte
 from empresas.models import Camara, Empresa, Vacante
 from rest_framework import viewsets
-from rest_framework.authentication import BasicAuthentication, SessionAuthentication
-from rest_framework.permissions import IsAuthenticated
+
 from api.serializers import UserSerializer, GroupSerializer, VacanteSerializer, EmpresaSerializer, ProfileSerializer, EgresadoSerializer
 
 #Agregamos el login y permisos

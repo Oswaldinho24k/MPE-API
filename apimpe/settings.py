@@ -25,7 +25,9 @@ SECRET_KEY = 'k$!6edj7ud@ob9e%7f_vpm-8-az@3!i$lj_xnzy%fg1y32i(5g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+
+ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition
@@ -41,7 +43,8 @@ INSTALLED_APPS = [
     'egresados',
     'empresas',
     'rest_framework',
-    'sedeco'
+    'sedeco',
+    'api'
 ]
 
 MIDDLEWARE = [
@@ -70,6 +73,7 @@ TEMPLATES = [
             ],
         },
     },
+
 ]
 
 WSGI_APPLICATION = 'apimpe.wsgi.application'
@@ -84,6 +88,11 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+#Update database configuration with $DATABASE_URL.
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
 
 
 # Password validation
@@ -122,11 +131,27 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
+
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static'
-STATICFILES_DIRS = (os.path.join(BASE_DIR,'staticfiles'),)
+
+STATIC_ROOT = 'staticfiles'
+STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISION_CLASSES':[
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly', 
+    ]
+}
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework.authentication.BasicAuthentication', 
+        'rest_framework.authentication.SessionAuthentication', 
+        ) 
+
+}

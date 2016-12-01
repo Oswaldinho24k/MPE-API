@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% for usr in usuarios %}
+        <h2>{{usr.username}}</h2>
+        <p>Token: {{ usr.profile.token }}</p>
+        <form action="." method="post">
+        {% csrf_token %}
+            <input type="hidden" name="token" value="{{ usr.profile.token }}">
+            <input type="hidden" name="user" value="{{ usr.id }}">
+            <input type="submit" value="Enviar Notificación">
+        </form>
+    {% empty %}
+        <p>No hay usuarios</p>
+    {% endfor %}
+
+{% endblock content %}

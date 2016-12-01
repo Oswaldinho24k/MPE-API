@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'accounts',
     'egresados',
     'empresas',
-    'rest_framework'
+    'rest_framework',
+    'sedeco'
 ]
 
 MIDDLEWARE = [
@@ -58,7 +59,7 @@ ROOT_URLCONF = 'apimpe.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

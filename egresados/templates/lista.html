@@ -11,8 +11,11 @@
 <div class="row">
 {%for pro  in profiles%}
   <div class="col-xs-6 col-md-3">
+
     <a href="{% url 'egresados:detalle' pro.id%}" class="thumbnail">
+    <img class="img-rounded" src="/static/images/perfil.png">
       <h3 align="center">{{pro.name}}</h3>
+
     </a>
   </div>
   {%empty%}

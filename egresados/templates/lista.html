@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block titles%}
+
+{% endblock titles%}
+
+{% block content%}
+<h1>Uy muchos egresados wuuuuuuuu</h1>
+
+
+<div class="row">
+{%for pro  in profiles%}
+  <div class="col-xs-6 col-md-3">
+    <a href="{% url 'egresados:detalle' pro.id%}" class="thumbnail">
+      <h3 align="center">{{pro.name}}</h3>
+    </a>
+  </div>
+  {%empty%}
+<p>:( no hay egresados </p>
+{%endfor%}
+</div>
+
+
+
+{% endblock content%}

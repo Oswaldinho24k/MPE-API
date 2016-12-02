@@ -1,13 +1,24 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.contrib.auth.models import User
-
+from empresas.models import Empresa, Vacante
+from egresados.models import Egresado
 
 class Home(View):
     def get(self, request):
+
+        egresados = len(Egresado.objects.all())
+        vacantes = len(Vacante.objects.all())
+        empresas = len(Empresa.objects.all())
+        becarios = len(Egresado.objects.filter(becario=True))
         template_name = "sedeco/home.html"
+
         context = {
-            "usuarios":User.objects.all()
+            "usuarios":User.objects.all(), 
+            'egresados':egresados,
+            'empresas':empresas,
+            'vacantes':vacantes,
+            'becarios':becarios
         }
         return render(request, template_name, context)
 

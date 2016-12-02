@@ -1,8 +1,38 @@
 {% extends 'base.html' %}
 
+{%block titles%}
+<style>
+    .imagen{
+        background: url(/static/images/empleo.jpg) no-repeat;
+        width: 100%;
+        height: 80vh;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .dash{
+        background: #042f41;
+        color: white;
+    }
+    h2{
+        margin: 0 auto;
+    }
+    #e1{
+        
+        width: 100%;
+        height: 30vh;
+    }
+    
+
+
+</style>
+{%endblock titles%}
+
 {% block content %}
 
-    {% for usr in usuarios %}
+    
+
+   <!--{% for usr in usuarios %}
         <h2>{{usr.username}}</h2>
         <p>Token: {{ usr.profile.token }}</p>
         <form action="." method="post">
@@ -13,6 +43,78 @@
         </form>
     {% empty %}
         <p>No hay usuarios</p>
-    {% endfor %}
+    {% endfor %}-->
 
+    <section>
+        <div class="imagen">
+            <h1 id="title">Mi primer empleo</h1>
+        </div>
+    </section>
+
+    <section class="dash">
+        <h2 align="center">Números del programa</h2>
+        <div class="row">
+          <div class="col-md-3">
+              <h3 align="center">Egresados</h3>
+              <h4><span class="glyphicon glyphicon-education"></span></h4>
+
+              <h5 align="center">{{egresados}}</h5>
+          </div>
+          <div class="col-md-3">
+              <h3 align="center">Empresas</h3>
+              <h4><span class="glyphicon glyphicon-briefcase"></span></h4>
+              <h5 align="center">{{empresas}}</h5>
+          </div>
+          <div class="col-md-3">
+              <h3 align="center">Vacantes</h3>
+              <h4><span class="glyphicon glyphicon-folder-open"></span></h4>
+              <h5 align="center">{{vacantes}}</h5>
+          </div>
+          <div class="col-md-3">
+              <h3 align="center">Becarios Colocados</h3>
+              <h4><span class="glyphicon glyphicon-user"></span></h4>
+              <h5 align="center">{{becarios}}</h5>
+          </div>
+        </div>
+
+    </section>
+    <section>
+
+        <div class="row">
+          <div class="col-md-6">
+              
+            <div class="row">
+          <div class="col-md-6">
+                <h2>Egresados</h2>
+                <p>Agiliza el tiempo para encontrar empleo, aumenta tus habilidades laborales, desarrolla tu experiencia profesional y conforma una red de trabajo.</p>
+              
+          </div>
+          <div class="col-md-6">
+              
+              <img src="/static/images/bec.png">
+          </div>
+        </div>
+              
+          </div>
+          <div class="col-md-6">
+              <div class="row">
+          <div class="col-md-6">
+                <h2>Empresas</h2>
+                <p>Agiliza el proceso de reclutamiento en tu empresa, accede a capital humano profesional, disminuye costo y tiempo de capacitación y genera incrementos de productividad.
+</p>
+              
+          </div>
+          <div class="col-md-6">
+              
+              <img src="/static/images/emp.png">
+          </div>
+        </div>
+              
+          </div>
+        </div>
+
+        
+
+        
+    </section>
 {% endblock content %}

@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+
+{%block titles%}
+
+{%endblock titles%}
+
+{%block content%}
+ 	<h3>Perfil de {{profile.name}}</h3>
+ 	
+
+ 	 
+        
+        <p>Token: {{ profile.token }}</p>
+        <form action="." method="post">
+        {% csrf_token %}
+            <input type="hidden" name="token" value="{{ profile.token }}">
+            <input type="hidden" name="user" value="{{ profile.user.id }}">
+            <input type="submit" value="Enviar Notificación">
+        </form>
+
+        
+    
+{%endblock content%}

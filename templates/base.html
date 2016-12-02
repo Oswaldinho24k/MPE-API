@@ -2,13 +2,122 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BlisS</title>
+    <title>Mi Primer Empleo</title>
+    <link rel="icon" href="static/images/h1.png" type="image/png" sizes="16x16">
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<style>
+		.navbar{
+			margin: 0 auto;
+		}
+		footer{
+			background: #042f41;
+			color: white;
+		}
+		h4{
+			text-align: center;
+		}
+	</style>
+	{% block titles %}
+	{% endblock titles%}
+	
 </head>
 <body>
-    <h1>Bienvenidos</h1>
 
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      
+
+		      
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		        <li class="active"><a href="http://hidalgo.gob.mx/">Gobierno <span class="sr-only">(current)</span></a></li>
+		        <li><a href="http://sedeco.hidalgo.gob.mx/">Sedeco</a></li>
+		        <li><a href="/">Mi primer empleo</a></li>
+		        
+		      </ul>
+		     
+		      <ul class="nav navbar-nav navbar-right">
+		        
+		        <li><a href="/vacantes">Vacantes</a></li>
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Becarios <span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		            <li><a href="/egresados">Lista de Becarios</a></li>
+		            <!--<li><a href="#">Another action</a></li>
+		            <li><a href="#">Something else here</a></li>
+		            <li role="separator" class="divider"></li>
+		            <li><a href="#">Separated link</a></li>-->
+		          </ul>
+		        </li>
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Empresas <span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		            <li><a href="/empresas">Lista de Empresas</a></li>
+		            <!--<li><a href="#">Another action</a></li>
+		            <li><a href="#">Something else here</a></li>
+		            <li role="separator" class="divider"></li>
+		            <li><a href="#">Separated link</a></li>-->
+		          </ul>
+		        </li>
+		        
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Perfil <span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		          	<li><a href="">Salir</a></li>
+		            <!--<li><a href="#">Another action</a></li>
+		            <li><a href="#">Something else here</a></li>
+		            <li role="separator" class="divider"></li>
+		            <li><a href="#">Separated link</a></li>-->
+		          </ul>
+		        </li>
+		        
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+    
+    
+		
     {% block content %}
     {% endblock content %}
 
+    	<footer>
+			<div class="row">
+			  <div class="col-md-4">
+			  	<img src="/static/images/h3.png">
+			  </div>
+			  <div class="col-md-4"><br><br><h4 >Gobierno del Estado de Hidalgo</h4></div>
+			  <div class="col-md-4">
+			  	<br><br><h4 >Contacto</h4>
+			  	
+			  </div>
+			</div>
+		</footer>
+
+    <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	{%block scripts%}
+	{%endblock scripts%}
 </body>
 </html>
